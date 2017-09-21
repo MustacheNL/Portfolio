@@ -1,22 +1,16 @@
 <?php
-if(stristr($_SERVER['REQUEST_URI'], 'config.inc.php')){
-    die("Wait a minute... who are you? You're not allowed to come here.");
+session_start();
+// Define database
+define('dbhost', 'localhost');
+define('dbuser', 'root');
+define('dbpass', '');
+define('dbname', 'portfolio');
+// Connecting database
+try {
+    $connect = new PDO("mysql:host=".dbhost."; dbname=".dbname, dbuser, dbpass);
+    $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 }
-class Database {
-    private $host = "localhost";
-    private $db_name = "portfolio";
-    private $username = "root";
-    private $password = "";
-    public $conn;
-    public function dbConnection() {
-        $this->conn = null;
-        try {
-            $this->conn = new PDO("mysql:host=" . $this->host . ";dbname=" . $this->db_name, $this->username, $this->password);
-            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            echo "conn succ";
-        } catch(PDOException $exception) {
-            echo "Connection error: " . $exception->getMessage();
-        } return $this->conn;
-    }
+catch(PDOException $e) {
+    echo $e->getMessage();
 }
 ?>
