@@ -15,11 +15,7 @@ if(isset($_POST['register'])) {
     if($errMsg == ''){
         try {
             $stmt = $connect->prepare('INSERT INTO admin_credentials (fullname, username, password) VALUES (:fullname, :username, :password)');
-            $stmt->execute(array(
-                ':fullname' => $fullname,
-                ':username' => $username,
-                ':password' => $password
-            ));
+            $stmt->execute(array(':fullname' => $fullname, ':username' => $username, ':password' => $password));
             header('Location: register.php?action=joined');
             exit;
         }

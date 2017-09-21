@@ -6,12 +6,12 @@
     <meta name="author" content="Nyma Dolatkhahnejad">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <link rel="stylesheet" href="css/default.css">
-    <link rel="stylesheet" href="css/layout.css">
-    <link rel="stylesheet" href="css/media-queries.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/portfolio/default.css">
+    <link rel="stylesheet" href="css/portfolio/layout.css">
+    <link rel="stylesheet" href="css/portfolio/media-queries.css">
+    <link rel="stylesheet" href="css/portfolio/magnific-popup.css">
 
-    <script src="js/modernizr.js"></script>
+    <script src="js/portfolio/modernizr.js"></script>
 
     <link rel="shortcut icon" href="images/favicon.png">
 </head>
@@ -520,12 +520,12 @@
 </footer>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="js/jquery-1.10.2.min.js"><\/script>')</script>
-<script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>
-<script src="js/jquery.flexslider.js"></script>
-<script src="js/waypoints.js"></script>
-<script src="js/jquery.fittext.js"></script>
-<script src="js/magnific-popup.js"></script>
-<script src="js/init.js"></script>
+<script>window.jQuery || document.write('<script src="js/portfolio/jquery-1.10.2.min.js"><\/script>')</script>
+<script type="text/javascript" src="js/portfolio/jquery-migrate-1.2.1.min.js"></script>
+<script src="js/portfolio/jquery.flexslider.js"></script>
+<script src="js/portfolio/waypoints.js"></script>
+<script src="js/portfolio/jquery.fittext.js"></script>
+<script src="js/portfolio/magnific-popup.js"></script>
+<script src="js/portfolio/init.js"></script>
 </body>
 </html>
