@@ -13,7 +13,7 @@ $error = "";
         
         if($error == "") {
             try {
-                $stmt = $connect->prepare('SELECT id, fullname, username, password FROM admin_credentials WHERE username = :username');
+                $stmt = $db->prepare('SELECT id, fullname, username, password FROM admin_credentials WHERE username = :username');
                 $stmt->execute(array(':username' => $username));
                 $data = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -27,11 +27,11 @@ $error = "";
                         header('Location: dashboard.php');
                         exit;
                     }
-                    else
-                        $error = 'Wachtwoord klopt niet!';
+                    else {
+                        $error = "Wachtwoord klopt niet!";
+                    }
                 }
-            }
-            catch(PDOException $e) {
+            } catch(PDOException $e) {
                 $error = $e->getMessage();
             }
         }
@@ -50,14 +50,14 @@ $error = "";
 
     <body>
       <div class="login">
-          <h1>Login</h1>
+          <h1>Inloggen</h1>
             <?php if ($error != "") { ?>
                  <div class="isa_error"><?php echo $error; ?></div>
             <?php } ?>
               <form action="" method="post">
                 <input type="text" name="username" value="<?php if(isset($_POST['username'])) echo $_POST['username'] ?>" autocomplete="off" /><br/><br/>
-                <input type="password" name="password" value="<?php if(isset($_POST['password'])) echo $_POST['password'] ?>" autocomplete="off" />
-                <button type="submit" name='login' value="Login" class="btn btn-primary btn-block btn-large">Let me in.</button>
+                <input type="password" name="password" value="<?php if(isset($_POST['password'])) echo $_POST['password'] ?>" autocomplete="off" /><br><br>
+                <button type="submit" name='login' value="Inloggen" class="btn btn-primary btn-block btn-large">Betreed de wonderlijke wereld!</button>
               </form>
         </div>
         <script  src="../js/index.js"></script>
