@@ -1,5 +1,5 @@
 <?php
-require "../../private/config.php";
+require 'includes/header.php';
 $error = "";
 if(isset($_POST['submit'])) {
     $country = $_POST['country'];
@@ -22,10 +22,11 @@ if(isset($_POST['submit'])) {
 
     if($error == ""){
         try {
-            $query = $db->prepare('UPDATE site_settings SET site_installed = 1 WHERE id = 1');
-            $query->execute();
-            $stmt = $db->prepare('UPDATE admin_credentials SET country = :country, region = :region, city = :city, street = :street, postalcode = :postalcode WHERE id = 1');
+            $stmt = $db->prepare('UPDATE admin_credentials SET country = :country, region = :region, city = :city, street = :street, postalcode = :postalcode');
             $stmt->execute(array(':country' => $country, ':region' => $region, ':city' => $city, ':street' => $street, ':postalcode' => $postalcode));
+
+            $stmt = $db->prepare('UPDATE site_settings SET site_installed = 1 WHERE id = 1');
+            $stmt->execute();
             header("Location: finished.php");
             exit;
         }
@@ -35,52 +36,6 @@ if(isset($_POST['submit'])) {
     }
 }
 ?>
-<html>
-    <head>
-        <title>
-            Installatie
-        </title>
-        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    </head>
-
-    <style>
-        .m-t-10 {
-            margin-top: 10px;
-        }
-
-        .panel-primary {
-            margin: auto;
-            margin-top: 50%;
-        }
-
-        .isa_info, .isa_success, .isa_warning, .isa_error {
-            margin: 10px 0px;
-            padding:12px;
-
-        }
-        .isa_info {
-            color: #00529B;
-            background-color: #BDE5F8;
-        }
-        .isa_success {
-            color: #4F8A10;
-            background-color: #DFF2BF;
-        }
-        .isa_warning {
-            color: #9F6000;
-            background-color: #FEEFB3;
-        }
-        .isa_error {
-            color: #D8000C;
-            background-color: #FFBABA;
-        }
-        .isa_info i, .isa_success i, .isa_warning i, .isa_error i {
-            margin:10px 22px;
-            font-size:2em;
-            vertical-align:middle;
-        }
-    </style>
-
     <body>
     <div class="container">
         <div class="row">

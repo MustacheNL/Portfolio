@@ -1,13 +1,16 @@
 <?php
 include "../private/config.php";
 
-$query = $db->prepare("SELECT * FROM site_settings");
-//$query->execute();
-$site_installed = $query->execute();
+$query = $db->prepare("SELECT site_installed FROM site_settings");
+$query->execute();
 
-echo $site_installed;
+while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
+    $site_installed = $row['site_installed'];
+}
 
 if ($site_installed == 0) {
     header("location: installation/");
+} elseif ($site_installed == 1) {
+    header("location: ");
 }
 ?>
