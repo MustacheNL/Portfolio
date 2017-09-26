@@ -1,15 +1,16 @@
 <?php
-require '../private/config.php';
+require "../private/config.php";
 $error = "";
 	if(isset($_POST['login'])) {
         $error = "";
         $username = $_POST['username'];
         $password = $_POST['password'];
 
-        if($username == "")
-            $error = 'Gebruikersnaam is niet ingevuld!';
-        if($password == "")
-            $error = 'Wachtwoord is niet ingevuld!';
+        if($username == "") {
+            $error = "Gebruikersnaam is niet ingevuld!";
+        } elseif($password == "") {
+            $error = "Wachtwoord is niet ingevuld!";
+        }
         
         if($error == "") {
             try {

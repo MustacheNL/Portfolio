@@ -32,7 +32,7 @@ require '../../private/config.php';
                             Om gebruik te kunnen maken van het paneel zijn er wat gegevens benodigd van jou!
                             Klik snel verder om te kijken hoe simpel, maar toch geweldig dit systeem is.
                             <br/><br/>
-                            <center><input type="submit" class="btn btn-primary m-t-10" name="submit" id="submitbtn" value="Lets go!" href="installation1.php"></center>
+                            <center><a href="installation1.php"><input type="submit" class="btn btn-primary m-t-10" name="submit" id="submitbtn" value="Lets go!""></a></center>
                         </div>
                     </div>
                 </div>
