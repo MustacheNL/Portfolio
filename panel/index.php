@@ -1,5 +1,5 @@
 <?php
-require "../private/config.php";
+require 'includes/header.php';
 $error = "";
 	if(isset($_POST['login'])) {
         $error = "";

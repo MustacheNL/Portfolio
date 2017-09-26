@@ -1,5 +1,5 @@
 <?php
-require '../private/config.php';
+require 'includes/header.php';
 if(empty($_SESSION['name'])) {
     header('Location: index.php');
 }
