@@ -14,7 +14,7 @@ $error = "";
         
         if($error == "") {
             try {
-                $stmt = $db->prepare('SELECT id, fullname, username, password FROM admin_credentials WHERE username = :username');
+                $stmt = $db->prepare("SELECT id, fullname, username, password FROM admin_credentials WHERE username = :username");
                 $stmt->execute(array(':username' => $username));
                 $data = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -27,8 +27,7 @@ $error = "";
                         $_SESSION['password'] = $data['password'];
                         header('Location: dashboard.php');
                         exit;
-                    }
-                    else {
+                    } else {
                         $error = "Wachtwoord klopt niet!";
                     }
                 }

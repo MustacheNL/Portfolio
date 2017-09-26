@@ -1,5 +1,6 @@
 <?php
 require 'includes/header.php';
+
 $error = "";
 if(isset($_POST['submit'])) {
     $fullname = $_POST['fullname'];

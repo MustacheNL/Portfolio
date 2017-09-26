@@ -6,7 +6,5 @@ if(empty($_SESSION['name'])) {
 echo "JE BENT INGELOGD....";
 
 echo "WIL JE UITLOGGEN?";
-
-echo $_SESSION['id'];
 ?>
 <a href="logout.php">XD</a>

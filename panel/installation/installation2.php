@@ -22,15 +22,14 @@ if(isset($_POST['submit'])) {
 
     if($error == ""){
         try {
-            $stmt = $db->prepare('UPDATE admin_credentials SET country = :country, region = :region, city = :city, street = :street, postalcode = :postalcode');
+            $stmt = $db->prepare("UPDATE admin_credentials SET country = :country, region = :region, city = :city, street = :street, postalcode = :postalcode");
             $stmt->execute(array(':country' => $country, ':region' => $region, ':city' => $city, ':street' => $street, ':postalcode' => $postalcode));
 
-            $stmt = $db->prepare('UPDATE site_settings SET site_installed = 1 WHERE id = 1');
+            $stmt = $db->prepare("UPDATE site_settings SET site_installed = 1 WHERE id = 1");
             $stmt->execute();
             header("Location: finished.php");
             exit;
-        }
-        catch(PDOException $e) {
+        } catch(PDOException $e) {
             echo $e->getMessage();
         }
     }
