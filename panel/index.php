@@ -1,5 +1,9 @@
 <?php
 require 'includes/header.php';
+if(!empty($_SESSION['name'])) {
+    header('Location: dashboard.php');
+}
+
 $error = "";
 	if(isset($_POST['login'])) {
         $error = "";
