@@ -64,8 +64,10 @@
         <div class="nine columns main-col">
             <h2>Over mij</h2>
             <p>
-                Hoi! Ik ben een 17 jarige programmeur die zich verdiept in applicaties bouwen zoals Content Management Systemen, administratie panelen en veel meer.
-                Ik verdiep me in de volgende talen: PHP, SQL, PDO (DB). Dit zijn de talen waar ik het meeste mee doe. Daarnaast doe ik ook nog wat kleine design
+                Hoi! Ik ben een 17 jarige programmeur die zich verdiept in applicaties bouwen zoals Content Management
+                Systemen, administratie panelen en veel meer.
+                Ik verdiep me in de volgende talen: PHP, SQL, PDO (DB). Dit zijn de talen waar ik het meeste mee doe.
+                Daarnaast doe ik ook nog wat kleine design
                 talen zoals HTML5, CSS3 en een beetje JavaScript.
 
             </p>
@@ -87,7 +89,8 @@
                     <p>
                         <a href="/cv.docx" class="button"><i class="fa fa-download"></i>CV Downloaden</a>
                     </p>
-                </div>+
+                </div>
+                +
             </div>
         </div>
     </div>
@@ -115,7 +118,7 @@
                 <div class="twelve columns">
                     <h3>Voortgezet onderwijs</h3>
                     <p class="info">Applicatieontwikkelaar MBO 4 <span>&bull;</span> <em class="date">2016 tot op
-                        heden</em>
+                            heden</em>
                     </p>
                     <p>
                         Na een heerlijke paar maanden zomer vakantie begonnen op deze opleiding. Dit onderwerp sprak me
@@ -419,7 +422,8 @@
 </section>
 
 <section id="call-to-action">
-    <div class="row"><div class="two columns header-col">
+    <div class="row">
+        <div class="two columns header-col">
             <h1><span>Contacteer mij!</span></h1>
         </div>
         <div class="seven columns">
@@ -466,7 +470,8 @@
 
                     <div>
                         <label for="contactMessage">Bericht <span class="required">*</span></label>
-                        <textarea cols="50" style="resize: vertical;" rows="15" id="contactMessage" name="contactMessage"></textarea>
+                        <textarea cols="50" style="resize: vertical;" rows="15" id="contactMessage"
+                                  name="contactMessage"></textarea>
                     </div>
 
                     <div>
