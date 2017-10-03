@@ -1,7 +1,7 @@
 <?php
 require "private/config.php";
 
-$stmt = $db->prepare("SELECT * FROM content, site_info WHERE page = 'home'");
+$stmt = $db->prepare("SELECT * FROM site_info");
 $stmt->execute();
 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 ?>
@@ -34,16 +34,23 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
         </ul>
     </nav>
 
+    <?php }
+    $stmt = $db->prepare("SELECT * FROM site_about");
+    $stmt->execute();
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
     <div class="row banner">
         <div class="banner-text">
-            <h1 class="responsive-headline"><?php echo $row['content1']; ?></h1>
-            <h3><?php echo $row['content2']; ?></h3>
+            <h1 class="responsive-headline"><?php echo $row['about_name']; ?></h1>
+            <h3><?php echo $row['about_info']; ?></h3>
             <hr/>
             <ul class="social">
-                <li><a href="https://facebook.com/NymaDolatkhahnejad"><i class="fa fa-facebook"></i></a></li>
-                <li><a href="https://twitter.com/Nymatjeuh"><i class="fa fa-twitter"></i></a></li>
-                <li><a href="https://instagram.com/Mustache2605"><i class="fa fa-instagram"></i></a></li>
-                <li><a href="skype:live:nyma_nl"><i class="fa fa-skype"></i></a></li>
+                <li><a href="https://facebook.com/<?php echo $row['about_facebook']; ?>"><i class="fa fa-facebook"></i></a>
+                </li>
+                <li><a href="https://twitter.com/<?php echo $row['about_twitter']; ?>"><i class="fa fa-twitter"></i></a>
+                </li>
+                <li><a href="https://instagram.com/<?php echo $row['about_instagram']; ?>"><i
+                                class="fa fa-instagram"></i></a></li>
+                <li><a href="<?php echo $row['about_skype']; ?>"><i class="fa fa-skype"></i></a></li>
             </ul>
         </div>
     </div>
@@ -55,7 +62,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 </header>
 
 <?php }
-$stmt = $db->prepare("SELECT * FROM content WHERE page = 'about'");
+$stmt = $db->prepare("SELECT * FROM site_about, content WHERE page = 'about'");
 $stmt->execute();
 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
     <section id="about">
@@ -65,15 +72,15 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
             </div>
             <div class="nine columns main-col">
                 <h2><?php echo $row['content1']; ?></h2>
-                <p><?php echo $row['content2']; ?></p>
+                <p><?php echo $row['about_info2']; ?></p>
                 <div class="row">
                     <div class="columns contact-details">
-                        <h2><?php echo $row['content3']; ?></h2>
-                        <p class="address"><?php echo $row['content4']; ?></p>
+                        <h2><?php echo $row['content2']; ?></h2>
+                        <p class="address"><?php echo $row['about_naw']; ?></p>
                     </div>
                     <div class="columns download">
                         <p><a href="/cv.docx" class="button"><i
-                                        class="fa fa-download"></i><?php echo $row['content5']; ?></a></p>
+                                        class="fa fa-download"></i><?php echo $row['content3']; ?></a></p>
                     </div>
                 </div>
             </div>
@@ -92,20 +99,20 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){ ?>
         <?php } ?>
         <div class="nine columns main-col">
             <?php
-            $stmt = $db->prepare("SELECT * FROM content WHERE page = 'resume_education'");
+            $stmt = $db->prepare("SELECT * FROM site_education");
             $stmt->execute();
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $content1 = $row['content1'];
-                $content2 = $row['content2'];
-                $content3 = $row['content3'];
-                $content4 = $row['content4'];
-                $content5 = $row['content5'];
+                $education_type = $row['education_type'];
+                $education_level = $row['education_level'];
+                $education_year_start = $row['education_year_end'];
+                $education_year_end = $row['education_year_start'];
+                $education_info = $row['education_info'];
 
                 echo "<div class=\"row item\">
                 <div class=\"twelve columns\">
-                    <h3>$content1</h3>
-                    <p class=\"info\">$content2<span>&bull;</span> <em class=\"date\">$content3 tot $content4</em></p>
-                    <p>$content4</p>
+                    <h3>$education_type</h3>
+                    <p class=\"info\">$education_level<span>&bull;</span> <em class=\"date\">$education_year_start tot $education_year_end</em></p>
+                    <p>$education_info</p>
                 </div>
             </div>";
             } ?>
@@ -122,21 +129,21 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){ ?>
         <?php } ?>
         <div class="nine columns main-col">
             <?php
-            $stmt = $db->prepare("SELECT * FROM content WHERE page = 'resume_work'");
+            $stmt = $db->prepare("SELECT * FROM site_work");
             $stmt->execute();
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $content1 = $row['content1'];
-                $content2 = $row['content2'];
-                $content3 = $row['content3'];
-                $content4 = $row['content4'];
-                $content5 = $row['content5'];
+                $work_type = $row['work_type'];
+                $work_place = $row['work_place'];
+                $work_year_start = $row['work_year_start'];
+                $work_year_end = $row['work_year_end'];
+                $work_info = $row['work_info'];
 
                 echo "<div class=\"row item\">
                 <div class=\"twelve columns\">
-                    <h3>$content1</h3>
-                    <p class=\"info\">$content2<span>&bull;</span> <em class=\"date\">$content3 tot $content4</em>
+                    <h3>$work_type</h3>
+                    <p class=\"info\">$work_place<span>&bull;</span> <em class=\"date\">$work_year_start tot $work_year_end</em>
                     </p>
-                    <p>$content5</p>
+                    <p>$work_info</p>
                 </div>
             </div>";
             } ?>
@@ -173,18 +180,19 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){ ?>
     <div class="row">
         <div class="twelve columns collapsed">
             <h1><?php echo $row['content1']; ?></h1>
-            <?php } $stmt = $db->prepare("SELECT * FROM content WHERE page = 'projects_title'");
+            <?php }
+            $stmt = $db->prepare("SELECT * FROM site_projects");
             $stmt->execute();
-            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){?>
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){ ?>
             <div id="portfolio-wrapper" class="bgrid-quarters s-bgrid-thirds cf">
                 <div class="columns portfolio-item">
                     <div class="item-wrap">
-                        <a href="#modal-01" title="">
+                        <a href="#modal-0<?php echo $row['id']; ?>" title="">
                             <img alt="" src="images/portfolio/coffee.jpg">
                             <div class="overlay">
                                 <div class="portfolio-item-meta">
-                                    <h5>BookOnShelf</h5>
-                                    <p>Content Management System</p>
+                                    <h5><?php echo $row['project_name']; ?></h5>
+                                    <p><?php echo $row['project_type']; ?></p>
                                 </div>
                             </div>
                             <div class="link-icon"><i class="icon-plus"></i></div>
@@ -192,240 +200,41 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){ ?>
 
                     </div>
                 </div>
-<?php } ?>
-                <div class="columns portfolio-item">
-                    <div class="item-wrap">
-                        <a href="#modal-02" title="">
-                            <img alt="" src="images/portfolio/console.jpg">
-                            <div class="overlay">
-                                <div class="portfolio-item-meta">
-                                    <h5>Project 2</h5>
-                                    <p>Leeg</p>
-                                </div>
-                            </div>
-                            <div class="link-icon"><i class="icon-plus"></i></div>
-                        </a>
-                    </div>
+                <?php } ?>
+            </div>
+        </div>
+
+        <?php $stmt = $db->prepare("SELECT * FROM site_projects");
+        $stmt->execute();
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
+            <div id="modal-0<?php echo $row['id']; ?>" class="popup-modal mfp-hide">
+                <img class="scale-with-grid" src="images/portfolio/modals/m-coffee.jpg" alt=""/>
+                <div class="description-box">
+                    <h4><?php echo $row['project_name']; ?></h4>
+                    <p><?php echo $row['project_info']; ?></p>
+                    <span class="categories"><i class="fa fa-tag"></i><?php echo $row['project_type']; ?></span>
                 </div>
 
-                <div class="columns portfolio-item">
-                    <div class="item-wrap">
-                        <a href="#modal-03" title="">
-                            <img alt="" src="images/portfolio/judah.jpg">
-                            <div class="overlay">
-                                <div class="portfolio-item-meta">
-                                    <h5>Project 3</h5>
-                                    <p>Leeg</p>
-                                </div>
-                            </div>
-                            <div class="link-icon"><i class="icon-plus"></i></div>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="columns portfolio-item">
-                    <div class="item-wrap">
-                        <a href="#modal-04" title="">
-                            <img alt="" src="images/portfolio/into-the-light.jpg">
-                            <div class="overlay">
-                                <div class="portfolio-item-meta">
-                                    <h5>Project 4</h5>
-                                    <p>Leeg</p>
-                                </div>
-                            </div>
-                            <div class="link-icon"><i class="icon-plus"></i></div>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="columns portfolio-item">
-                    <div class="item-wrap">
-                        <a href="#modal-05" title="">
-                            <img alt="" src="images/portfolio/farmerboy.jpg">
-                            <div class="overlay">
-                                <div class="portfolio-item-meta">
-                                    <h5>Project 5</h5>
-                                    <p>Leeg</p>
-                                </div>
-                            </div>
-                            <div class="link-icon"><i class="icon-plus"></i></div>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="columns portfolio-item">
-                    <div class="item-wrap">
-                        <a href="#modal-06" title="">
-                            <img alt="" src="images/portfolio/girl.jpg">
-                            <div class="overlay">
-                                <div class="portfolio-item-meta">
-                                    <h5>Project 6</h5>
-                                    <p>Leeg</p>
-                                </div>
-                            </div>
-                            <div class="link-icon"><i class="icon-plus"></i></div>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="columns portfolio-item">
-                    <div class="item-wrap">
-                        <a href="#modal-07" title="">
-                            <img alt="" src="images/portfolio/origami.jpg">
-                            <div class="overlay">
-                                <div class="portfolio-item-meta">
-                                    <h5>Project 7</h5>
-                                    <p>Leeg</p>
-                                </div>
-                            </div>
-                            <div class="link-icon"><i class="icon-plus"></i></div>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="columns portfolio-item">
-                    <div class="item-wrap">
-                        <a href="#modal-08" title="">
-                            <img alt="" src="images/portfolio/retrocam.jpg">
-                            <div class="overlay">
-                                <div class="portfolio-item-meta">
-                                    <h5>Project 8</h5>
-                                    <p>Leeg</p>
-                                </div>
-                            </div>
-                            <div class="link-icon"><i class="icon-plus"></i></div>
-                        </a>
-                    </div>
+                <div class="link-box">
+                    <a href="<?php echo $row['project_link']; ?>" target="_blank">Project link</a>
+                    <a class="popup-modal-dismiss">Sluiten</a>
                 </div>
             </div>
-        </div>
-
-        <div id="modal-01" class="popup-modal mfp-hide">
-            <img class="scale-with-grid" src="images/portfolio/modals/m-coffee.jpg" alt=""/>
-            <div class="description-box">
-                <h4>BookOnShelf</h4>
-                <p>Een CMS (Content Management System) waarmee je boeken kan uitlenen en beheren, toevoegen en
-                    verwijderen. Elke gebruiker heeft
-                    zijn eigen account waarmee die de website op kan. Inloggen en registreren is ook inbegrepen,
-                    helemaal vanaf scratch 100%.</p>
-                <span class="categories"><i class="fa fa-tag"></i>Content Management System</span>
-            </div>
-
-            <div class="link-box">
-                <a href="https://github.com/MustacheNL/BookOnShelf2.0" target="_blank">GitHub</a>
-                <a class="popup-modal-dismiss">Sluiten</a>
-            </div>
-        </div>
-
-        <div id="modal-02" class="popup-modal mfp-hide">
-            <img class="scale-with-grid" src="images/portfolio/modals/m-console.jpg" alt=""/>
-            <div class="description-box">
-                <h4>Project 2</h4>
-                <p>Een nog leeg project, zal binnenkort wel komen!</p>
-                <span class="categories"><i class="fa fa-tag"></i>Geen informatie</span>
-            </div>
-
-            <div class="link-box">
-                <a href="https://github.com" target="_blank">GitHub</a>
-                <a class="popup-modal-dismiss">Sluiten</a>
-            </div>
-        </div>
-
-        <div id="modal-03" class="popup-modal mfp-hide">
-            <img class="scale-with-grid" src="images/portfolio/modals/m-judah.jpg" alt=""/>
-            <div class="description-box">
-                <h4>Project 3</h4>
-                <p>Een nog leeg project, zal binnenkort wel komen!</p>
-                <span class="categories"><i class="fa fa-tag"></i>Geen informatie</span>
-            </div>
-
-            <div class="link-box">
-                <a href="https://github.com" target="_blank">GitHub</a>
-                <a class="popup-modal-dismiss">Sluiten</a>
-            </div>
-        </div>
-
-        <div id="modal-04" class="popup-modal mfp-hide">
-            <img class="scale-with-grid" src="images/portfolio/modals/m-intothelight.jpg" alt=""/>
-            <div class="description-box">
-                <h4>Project 4</h4>
-                <p>Een nog leeg project, zal binnenkort wel komen!</p>
-                <span class="categories"><i class="fa fa-tag"></i>Geen informatie</span>
-            </div>
-
-            <div class="link-box">
-                <a href="https://github.com" target="_blank">GitHub</a>
-                <a class="popup-modal-dismiss">Sluiten</a>
-            </div>
-        </div>
-
-        <div id="modal-05" class="popup-modal mfp-hide">
-            <img class="scale-with-grid" src="images/portfolio/modals/m-farmerboy.jpg" alt=""/>
-            <div class="description-box">
-                <h4>Project 5</h4>
-                <p>Een nog leeg project, zal binnenkort wel komen!</p>
-                <span class="categories"><i class="fa fa-tag"></i>Geen informatie</span>
-            </div>
-
-            <div class="link-box">
-                <a href="https://github.com" target="_blank">GitHub</a>
-                <a class="popup-modal-dismiss">Sluiten</a>
-            </div>
-        </div>
-
-        <div id="modal-06" class="popup-modal mfp-hide">
-            <img class="scale-with-grid" src="images/portfolio/modals/m-girl.jpg" alt=""/>
-            <div class="description-box">
-                <h4>Project 6</h4>
-                <p>Een nog leeg project, zal binnenkort wel komen!</p>
-                <span class="categories"><i class="fa fa-tag"></i>Geen informatie</span>
-            </div>
-
-            <div class="link-box">
-                <a href="https://github.com" target="_blank">GitHub</a>
-                <a class="popup-modal-dismiss">Sluiten</a>
-            </div>
-        </div>
-
-        <div id="modal-07" class="popup-modal mfp-hide">
-            <img class="scale-with-grid" src="images/portfolio/modals/m-origami.jpg" alt=""/>
-            <div class="description-box">
-                <h4>Project 7</h4>
-                <p>Een nog leeg project, zal binnenkort wel komen!</p>
-                <span class="categories"><i class="fa fa-tag"></i>Geen informatie</span>
-            </div>
-
-            <div class="link-box">
-                <a href="https://github.com" target="_blank">GitHub</a>
-                <a class="popup-modal-dismiss">Sluiten</a>
-            </div>
-        </div>
-
-        <div id="modal-08" class="popup-modal mfp-hide">
-            <img class="scale-with-grid" src="images/portfolio/modals/m-retrocam.jpg" alt=""/>
-            <div class="description-box">
-                <h4>Project 8</h4>
-                <p>Een nog leeg project, zal binnenkort wel komen!</p>
-                <span class="categories"><i class="fa fa-tag"></i>Geen informatie</span>
-            </div>
-
-            <div class="link-box">
-                <a href="https://github.com" target="_blank">GitHub</a>
-                <a class="popup-modal-dismiss">Sluiten</a>
-            </div>
-        </div>
+        <?php } ?>
     </div>
 </section>
 
+<?php $stmt = $db->prepare("SELECT * FROM content WHERE page = 'contact_text'");
+$stmt->execute();
+while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
 <section id="call-to-action">
     <div class="row">
         <div class="two columns header-col">
-            <h1><span>Contacteer mij!</span></h1>
+            <h1><span><?php echo $row['content1']; ?></span></h1>
         </div>
         <div class="seven columns">
-            <h2><span class="lead">Nog niet genoeg?</span></h2>
-            <p><span class="lead">Zijn er nog dingen die ik ben vergeten, staat er iets waarvan je denkt dat het niet klopt óf
-            wil je contact met me opnemen? Scrol dan nog even verder!</span></p>
+            <h2><span class="lead"><?php echo $row['content2']; ?></span></h2>
+            <p><span class="lead"><?php echo $row['content3']; ?></span></p>
         </div>
         <div class="three columns action"></div>
     </div>
@@ -434,16 +243,14 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){ ?>
 <section id="contact">
     <div class="row section-head">
         <div class="two columns header-col">
-            <h1><span>Contacteer mij!</span></h1>
+            <h1><span><?php echo $row['content1']; ?></span></h1>
         </div>
 
         <div class="ten columns">
-            <p class="lead">Heb je een vraag of opmerking? Aarzel niet om mij een bericht te sturen. De hele week
-                probeer ik binnen 24 uur te reageren!
-
-            </p>
+            <p class="lead"><?php echo $row['content4']; ?></p>
         </div>
     </div>
+    <?php } ?>
 
     <div class="row">
         <div class="eight columns">
