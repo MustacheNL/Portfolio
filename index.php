@@ -1,26 +1,30 @@
+<?php
+require "private/config.php";
+
+$stmt = $db->prepare("SELECT * FROM content, site_info WHERE page = 'home'");
+$stmt->execute();
+while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+?>
 <!DOCTYPE html>
 <head>
     <meta charset="utf-8">
-    <title>Nyma Dolatkhahnejad</title>
+    <title><?php echo $row['site_name']; ?></title>
     <meta name="description" content="Een portfolio over mij!">
-    <meta name="author" content="Nyma Dolatkhahnejad">
+    <meta name="author" content="<?php echo $row['site_name']; ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
     <link rel="stylesheet" href="css/portfolio/default.css">
     <link rel="stylesheet" href="css/portfolio/layout.css">
     <link rel="stylesheet" href="css/portfolio/media-queries.css">
     <link rel="stylesheet" href="css/portfolio/magnific-popup.css">
-
     <script src="js/portfolio/modernizr.js"></script>
-
     <link rel="shortcut icon" href="images/favicon.png">
 </head>
 
 <body>
 <header id="home">
     <nav id="nav-wrap">
-        <a class="mobile-btn" href="#nav-wrap" title="Show navigation">Show navigation</a>
-        <a class="mobile-btn" href="#" title="Hide navigation">Hide navigation</a>
+        <a class="mobile-btn" href="#nav-wrap" title="Open navigatie">Open navigatie</a>
+        <a class="mobile-btn" href="#" title="Sluit navigatie">Sluit navigatie</a>
         <ul id="nav" class="nav">
             <li class="current"><a class="smoothscroll" href="#home">Home</a></li>
             <li><a class="smoothscroll" href="#about">Over mij</a></li>
@@ -32,13 +36,8 @@
 
     <div class="row banner">
         <div class="banner-text">
-            <h1 class="responsive-headline">Nyma Dolatkhahnejad</h1>
-            <h3>
-                Ik ben een <span>back-end</span> programmeur die geweldige systemen maakt!
-                Dit doe ik allemaal met PHP, de taal waar ik me in verdiep. Natuurlijk ook meer,
-                maar laten we daarvoor verder <a class="smoothscroll" href="#about">gaan.</a>
-                Zo kom je meer over mij te <a class="smoothscroll" href="#about">weten</a>.
-            </h3>
+            <h1 class="responsive-headline"><?php echo $row['content1']; ?></h1>
+            <h3><?php echo $row['content2']; ?></h3>
             <hr/>
             <ul class="social">
                 <li><a href="https://facebook.com/NymaDolatkhahnejad"><i class="fa fa-facebook"></i></a></li>
@@ -55,114 +54,105 @@
 
 </header>
 
-<section id="about">
-    <div class="row">
-        <div class="three columns">
-            <img class="profile-pic" src="images/mypicture.jpg" alt=""/>
-        </div>
-
-        <div class="nine columns main-col">
-            <h2>Over mij</h2>
-            <p>
-                Hoi! Ik ben een 17 jarige programmeur die zich verdiept in applicaties bouwen zoals Content Management
-                Systemen, administratie panelen en veel meer.
-                Ik verdiep me in de volgende talen: PHP, SQL, PDO (DB). Dit zijn de talen waar ik het meeste mee doe.
-                Daarnaast doe ik ook nog wat kleine design
-                talen zoals HTML5, CSS3 en een beetje JavaScript.
-
-            </p>
-
-            <div class="row">
-                <div class="columns contact-details">
-                    <h2>Contact gegevens</h2>
-                    <p class="address">
-                        <span>Nyma Dolatkhahnejad</span><br>
-                        <span>Van Der Hagenstraat 701<br>
-						         Ede, 6717DK Nederland
-                     </span><br>
-                        <span>06-47966197</span><br>
-                        <span>nyma@telfort.nl</span>
-                    </p>
+<?php }
+$stmt = $db->prepare("SELECT * FROM content WHERE page = 'about'");
+$stmt->execute();
+while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
+    <section id="about">
+        <div class="row">
+            <div class="three columns">
+                <img class="profile-pic" src="images/<?php echo $row['image']; ?>" alt=""/>
+            </div>
+            <div class="nine columns main-col">
+                <h2><?php echo $row['content1']; ?></h2>
+                <p><?php echo $row['content2']; ?></p>
+                <div class="row">
+                    <div class="columns contact-details">
+                        <h2><?php echo $row['content3']; ?></h2>
+                        <p class="address"><?php echo $row['content4']; ?></p>
+                    </div>
+                    <div class="columns download">
+                        <p><a href="/cv.docx" class="button"><i
+                                        class="fa fa-download"></i><?php echo $row['content5']; ?></a></p>
+                    </div>
                 </div>
-
-                <div class="columns download">
-                    <p>
-                        <a href="/cv.docx" class="button"><i class="fa fa-download"></i>CV Downloaden</a>
-                    </p>
-                </div>
-                +
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
+<?php }
+$stmt = $db->prepare("SELECT * FROM content WHERE page = 'resume_education_title'");
+$stmt->execute();
+while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){ ?>
 <section id="resume">
     <div class="row education">
         <div class="three columns header-col">
-            <h1><span>Educatie</span></h1>
+            <h1><span><?php echo $row['content1']; ?></span></h1>
         </div>
-
+        <?php } ?>
         <div class="nine columns main-col">
-            <div class="row item">
-                <div class="twelve columns">
-                    <h3>Middelbare school</h3>
-                    <p class="info">Kader beroepsgerichte leerweg <span>&bull;</span> <em class="date">2012-2016</em>
-                    </p>
-                    <p>
-                        Deze opleiding heb ik van 2012 tot 2016 gevolgd waarna ik naar het MBO 4 ben doorgestroomd.
-                    </p>
-                </div>
-            </div>
+            <?php
+            $stmt = $db->prepare("SELECT * FROM content WHERE page = 'resume_education'");
+            $stmt->execute();
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $content1 = $row['content1'];
+                $content2 = $row['content2'];
+                $content3 = $row['content3'];
+                $content4 = $row['content4'];
+                $content5 = $row['content5'];
 
-            <div class="row item">
-                <div class="twelve columns">
-                    <h3>Voortgezet onderwijs</h3>
-                    <p class="info">Applicatieontwikkelaar MBO 4 <span>&bull;</span> <em class="date">2016 tot op
-                            heden</em>
-                    </p>
-                    <p>
-                        Na een heerlijke paar maanden zomer vakantie begonnen op deze opleiding. Dit onderwerp sprak me
-                        aan
-                        en dat is ook de reden waarom ik deze opleiding nu volg. Een geweldige opleiding waar ik coole
-                        dingen
-                        leer.
-                    </p>
+                echo "<div class=\"row item\">
+                <div class=\"twelve columns\">
+                    <h3>$content1</h3>
+                    <p class=\"info\">$content2<span>&bull;</span> <em class=\"date\">$content3 tot $content4</em></p>
+                    <p>$content4</p>
                 </div>
-            </div>
+            </div>";
+            } ?>
         </div>
     </div>
 
+    <?php $stmt = $db->prepare("SELECT * FROM content WHERE page = 'resume_work_title'");
+    $stmt->execute();
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){ ?>
     <div class="row work">
         <div class="three columns header-col">
-            <h1><span>Werk</span></h1>
+            <h1><span><?php echo $row['content1']; ?></span></h1>
         </div>
-
+        <?php } ?>
         <div class="nine columns main-col">
-            <div class="row item">
-                <div class="twelve columns">
-                    <h3>Vakkenvuller</h3>
-                    <p class="info">Boni Ede <span>&bull;</span> <em class="date">2015 tot op heden</em>
+            <?php
+            $stmt = $db->prepare("SELECT * FROM content WHERE page = 'resume_work'");
+            $stmt->execute();
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $content1 = $row['content1'];
+                $content2 = $row['content2'];
+                $content3 = $row['content3'];
+                $content4 = $row['content4'];
+                $content5 = $row['content5'];
+
+                echo "<div class=\"row item\">
+                <div class=\"twelve columns\">
+                    <h3>$content1</h3>
+                    <p class=\"info\">$content2<span>&bull;</span> <em class=\"date\">$content3 tot $content4</em>
                     </p>
-                    <p>
-                        Een normale winkel met geweldige collega's. Ik werk hier al vanaf december 2015, uiteraard
-                        heeft dit niks te maken met wat ik doe (programmeren). Maar het is een leuk bijbaantje en de
-                        collega's die ik heb maken het ook daadwerkelijk leuk.
-                    </p>
+                    <p>$content5</p>
                 </div>
-            </div>
+            </div>";
+            } ?>
         </div>
     </div>
 
+    <?php $stmt = $db->prepare("SELECT * FROM content WHERE page = 'skills'");
+    $stmt->execute();
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){ ?>
     <div class="row skill">
         <div class="three columns header-col">
-            <h1><span>Skills</span></h1>
+            <h1><span><?php echo $row['content1']; ?></span></h1>
         </div>
-
         <div class="nine columns main-col">
-            <p>
-                Wat ingeschatte percentages van mijn skills, ik werk er constant aan om het te verbeteren!
-            </p>
-
+            <p><?php echo $row['content2']; ?></p>
+            <?php } ?>
             <div class="bars">
                 <ul class="skills">
                     <li><span class="bar-expand php"></span><em>PHP</em></li>
@@ -176,10 +166,16 @@
     </div>
 </section>
 
+<?php $stmt = $db->prepare("SELECT * FROM content WHERE page = 'projects_title'");
+$stmt->execute();
+while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){ ?>
 <section id="portfolio">
     <div class="row">
         <div class="twelve columns collapsed">
-            <h1>Mijn projecten</h1>
+            <h1><?php echo $row['content1']; ?></h1>
+            <?php } $stmt = $db->prepare("SELECT * FROM content WHERE page = 'projects_title'");
+            $stmt->execute();
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){?>
             <div id="portfolio-wrapper" class="bgrid-quarters s-bgrid-thirds cf">
                 <div class="columns portfolio-item">
                     <div class="item-wrap">
@@ -196,7 +192,7 @@
 
                     </div>
                 </div>
-
+<?php } ?>
                 <div class="columns portfolio-item">
                     <div class="item-wrap">
                         <a href="#modal-02" title="">
