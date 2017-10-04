@@ -62,7 +62,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 </header>
 
 <?php }
-$stmt = $db->prepare("SELECT * FROM site_about, content WHERE page = 'about'");
+$stmt = $db->prepare("SELECT * FROM admin_credentials, site_about, content WHERE page = 'about'");
 $stmt->execute();
 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
     <section id="about">
@@ -76,7 +76,11 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
                 <div class="row">
                     <div class="columns contact-details">
                         <h2><?php echo $row['content2']; ?></h2>
-                        <p class="address"><?php echo $row['about_naw']; ?></p>
+                        <p class="address">
+                            <span><?php echo $row['fullname']; ?></span><br><span><?php echo $row['street']; ?>
+                                <br> <?php echo $row['city']; ?>
+                                , <?php echo $row['postalcode']; ?> <?php echo $row['country']; ?> </span><br>
+                            <span>06-47966197</span><br></p>
                     </div>
                     <div class="columns download">
                         <p><a href="/cv.docx" class="button"><i
@@ -150,7 +154,141 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){ ?>
         </div>
     </div>
 
-    <?php $stmt = $db->prepare("SELECT * FROM content WHERE page = 'skills'");
+    <?php $stmt = $db->prepare("SELECT * FROM site_skills");
+    $stmt->execute();
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){ ?>
+    <style>
+        .php {
+            width: <?php echo $row['skill_percentage1']; ?>%;
+            -moz-animation: php 2s ease;
+            -webkit-animation: php 2s ease;
+        }
+
+        .html5 {
+            width: <?php echo $row['skill_percentage2']; ?>%;
+            -moz-animation: html5 2s ease;
+            -webkit-animation: html5 2s ease;
+        }
+
+        .css3 {
+            width: <?php echo $row['skill_percentage3']; ?>%;
+            -moz-animation: css3 2s ease;
+            -webkit-animation: css3 2s ease;
+        }
+
+        .sql {
+            width: <?php echo $row['skill_percentage4']; ?>%;
+            -moz-animation: sql 2s ease;
+            -webkit-animation: sql 2s ease;
+        }
+
+        .design {
+            width: <?php echo $row['skill_percentage5']; ?>%;
+            -moz-animation: design 2s ease;
+            -webkit-animation: design 2s ease;
+        }
+
+        @-moz-keyframes php {
+            0% {
+                width: 0px;
+            }
+
+            100% {
+                width: <?php echo $row['skill_percentage1']; ?>%;
+            }
+        }
+
+        @-moz-keyframes html5 {
+            0% {
+                width: 0px;
+            }
+
+            100% {
+                width: <?php echo $row['skill_percentage2']; ?>%;
+            }
+        }
+
+        @-moz-keyframes css3 {
+            0% {
+                width: 0px;
+            }
+
+            100% {
+                width: <?php echo $row['skill_percentage3']; ?>%;
+            }
+        }
+
+        @-moz-keyframes sql {
+            0% {
+                width: 0px;
+            }
+
+            100% {
+                width: <?php echo $row['skill_percentage4']; ?>%;
+            }
+        }
+
+        @-moz-keyframes design {
+            0% {
+                width: 0px;
+            }
+
+            100% {
+                width: <?php echo $row['skill_percentage5']; ?>%;
+            }
+        }
+
+        @-webkit-keyframes php {
+            0% {
+                width: 0px;
+            }
+
+            100% {
+                width: <?php echo $row['skill_percentage1']; ?>%;
+            }
+        }
+
+        @-webkit-keyframes html5 {
+            0% {
+                width: 0px;
+            }
+
+            100% {
+                width: <?php echo $row['skill_percentage2']; ?>%;
+            }
+        }
+
+        @-webkit-keyframes css3 {
+            0% {
+                width: 0px;
+            }
+
+            100% {
+                width: <?php echo $row['skill_percentage3']; ?>%;
+            }
+        }
+
+        @-webkit-keyframes sql {
+            0% {
+                width: 0px;
+            }
+
+            100% {
+                width: <?php echo $row['skill_percentage4']; ?>%;
+            }
+        }
+
+        @-webkit-keyframes design {
+            0% {
+                width: 0px;
+            }
+
+            100% {
+                width: <?php echo $row['skill_percentage5']; ?>%;
+            }
+        }
+    </style>
+    <?php } $stmt = $db->prepare("SELECT * FROM content WHERE page = 'skills'");
     $stmt->execute();
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){ ?>
     <div class="row skill">
@@ -159,7 +297,9 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){ ?>
         </div>
         <div class="nine columns main-col">
             <p><?php echo $row['content2']; ?></p>
-            <?php } ?>
+            <?php } $stmt = $db->prepare("SELECT * FROM site_skills");
+            $stmt->execute();
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){ ?>
             <div class="bars">
                 <ul class="skills">
                     <li><span class="bar-expand php"></span><em>PHP</em></li>
@@ -169,6 +309,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){ ?>
                     <li><span class="bar-expand design"></span><em>Design</em></li>
                 </ul>
             </div>
+            <?php } ?>
         </div>
     </div>
 </section>
@@ -207,24 +348,24 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){ ?>
         <?php $stmt = $db->prepare("SELECT * FROM site_projects");
         $stmt->execute();
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
-            <div id="modal-0<?php echo $row['id']; ?>" class="popup-modal mfp-hide">
-                <img class="scale-with-grid" src="images/portfolio/modals/m-coffee.jpg" alt=""/>
-                <div class="description-box">
-                    <h4><?php echo $row['project_name']; ?></h4>
-                    <p><?php echo $row['project_info']; ?></p>
-                    <span class="categories"><i class="fa fa-tag"></i><?php echo $row['project_type']; ?></span>
-                </div>
-
-                <div class="link-box">
-                    <a href="<?php echo $row['project_link']; ?>" target="_blank">Project link</a>
-                    <a class="popup-modal-dismiss">Sluiten</a>
-                </div>
+        <div id="modal-0<?php echo $row['id']; ?>" class="popup-modal mfp-hide">
+            <img class="scale-with-grid" src="images/portfolio/modals/m-coffee.jpg" alt=""/>
+            <div class="description-box">
+                <h4><?php echo $row['project_name']; ?></h4>
+                <p><?php echo $row['project_info']; ?></p>
+                <span class="categories"><i class="fa fa-tag"></i><?php echo $row['project_type']; ?></span>
             </div>
-        <?php } ?>
+
+            <div class="link-box">
+                <a href="<?php echo $row['project_link']; ?>" target="_blank">Project link</a>
+                <a class="popup-modal-dismiss">Sluiten</a>
+            </div>
+        </div>
     </div>
 </section>
 
-<?php $stmt = $db->prepare("SELECT * FROM content WHERE page = 'contact_text'");
+<?php }
+$stmt = $db->prepare("SELECT * FROM content WHERE page = 'contact_text'");
 $stmt->execute();
 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
 <section id="call-to-action">
@@ -292,39 +433,52 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
             </div>
         </div>
 
-        <aside class="four columns footer-widgets">
-            <div class="widget widget_contact">
-                <h4>Adres gegevens en telefoonnummer</h4>
-                <p class="address">
-                    Nyma Dolatkhahnejad<br>
-                    Van Der Hagenstraat 701 <br>
-                    Ede, 6717DK Nederland<br>
-                    <span>06-47966197</span>
-                </p>
-            </div>
-        </aside>
+        <?php $stmt = $db->prepare("SELECT * FROM admin_credentials");
+        $stmt->execute();
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
+            <aside class="four columns footer-widgets">
+                <div class="widget widget_contact">
+                    <h4>Adres gegevens en telefoonnummer</h4>
+                    <p class="address">
+                        <?php echo $row['fullname']; ?><br>
+                        <?php echo $row['street']; ?> <br>
+                        <?php echo $row['city']; ?>, <?php echo $row['postalcode']; ?> <?php echo $row['country']; ?>
+                        <br>
+                        <span>06-47966197</span>
+                    </p>
+                </div>
+            </aside>
+        <?php } ?>
     </div>
 </section>
 
 <footer>
-    <div class="row">
-        <div class="twelve columns">
-            <ul class="social-links">
-                <li><a href="https://facebook.com/NymaDolatkhahnejad"><i class="fa fa-facebook"></i></a></li>
-                <li><a href="https://twitter.com/Nymatjeuh"><i class="fa fa-twitter"></i></a></li>
-                <li><a href="https://instagram.com/Mustache2605"><i class="fa fa-instagram"></i></a></li>
-                <li><a href="skype:live:nyma_nl"><i class="fa fa-skype"></i></a></li>
-            </ul>
+    <?php $stmt = $db->prepare("SELECT * FROM site_about");
+    $stmt->execute();
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
+        <div class="row">
+            <div class="twelve columns">
+                <ul class="social-links">
+                    <li><a href="https://facebook.com/<?php echo $row['about_facebook']; ?>"><i
+                                    class="fa fa-facebook"></i></a></li>
+                    <li><a href="https://twitter.com/<?php echo $row['about_twitter']; ?>"><i class="fa fa-twitter"></i></a>
+                    </li>
+                    <li><a href="https://instagram.com/<?php echo $row['about_instagram']; ?>"><i
+                                    class="fa fa-instagram"></i></a></li>
+                    <li><a href="<?php echo $row['about_skype']; ?>"><i class="fa fa-skype"></i></a></li>
+                </ul>
 
-            <ul class="copyright">
-                <li>&copy; Copyright 2016-2017 Nyma Dolatkhahnejad</li>
-                <li>Design gemaakt door <a href="http://www.styleshout.com/" title="Styleshout" target="_blank">Styleshout</a>
-                </li>
-            </ul>
+                <ul class="copyright">
+                    <li>&copy; Copyright 2016-2017 Systeem gemaakt door <a href="http://nymadolat.nl/">Nyma
+                            Dolatkhahnejad</a></li>
+                    <li>Design gemaakt door <a href="http://www.styleshout.com/" title="Styleshout" target="_blank">Styleshout</a>
+                    </li>
+                </ul>
+            </div>
+            <div id="go-top"><a class="smoothscroll" title="Terug omhoog" href="#home"><i class="icon-up-open"></i></a>
+            </div>
         </div>
-        <div id="go-top"><a class="smoothscroll" title="Terug omhoog" href="#home"><i class="icon-up-open"></i></a>
-        </div>
-    </div>
+    <?php } ?>
 </footer>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>

@@ -14,7 +14,7 @@ while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
     }
 }
 
-if (empty($_SESSION['name'])) {
-    header('Location: index.php');
+if (!empty($_SESSION['name'])) {
+    header('Location: dashboard.php');
 }
 ?>

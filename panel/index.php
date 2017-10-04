@@ -1,8 +1,5 @@
 <?php
-require 'includes/header.php';
-if (!empty($_SESSION['name'])) {
-    header('Location: dashboard.php');
-}
+require 'includes/header_index.php';
 
 $error = "";
 if (isset($_POST['login'])) {
