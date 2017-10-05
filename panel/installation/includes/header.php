@@ -4,7 +4,6 @@ require '../../private/config.php';
 $query = $db->prepare("SELECT * FROM site_settings");
 $query->execute();
 
-
 while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
     $site_installed = $row['site_installed'];
 

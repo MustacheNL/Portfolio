@@ -8,9 +8,9 @@ if (isset($_POST['login'])) {
     $password = $_POST['password'];
 
     if ($username == "") {
-        $error = "Gebruikersnaam is niet ingevuld!";
+        $error = "Gebruikersnaam mag niet leeg zijn!";
     } elseif ($password == "") {
-        $error = "Wachtwoord is niet ingevuld!";
+        $error = "Wachtwoord mag niet leeg zijn!";
     }
 
     if ($error == "") {
@@ -20,16 +20,16 @@ if (isset($_POST['login'])) {
             $data = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if ($data == false) {
-                $error = "Gebruikersnaam klopt niet!";
+                $error = "Gebruikersnaam en/of wachtwoord klopt niet!";
             } else {
-                if ($password == $data['password']) {
+                if (password_verify($password, $data['password'])) {
                     $_SESSION['name'] = $data['fullname'];
                     $_SESSION['username'] = $data['username'];
                     $_SESSION['password'] = $data['password'];
                     header('Location: dashboard.php');
                     exit;
                 } else {
-                    $error = "Wachtwoord klopt niet!";
+                    $error = "Gebruikersnaam en/of wachtwoord klopt niet!";
                 }
             }
         } catch (PDOException $e) {

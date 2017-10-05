@@ -1,5 +1,16 @@
 <?php
 require 'includes/header.php';
+$query = $db->prepare("SELECT * FROM admin_credentials");
+$query->execute();
+
+
+while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
+    $fullname = $row['fullname'];
+
+    if ($fullname == "") {
+        header("location: installation1.php");
+    }
+}
 
 $error = "";
 if(isset($_POST['submit'])) {
