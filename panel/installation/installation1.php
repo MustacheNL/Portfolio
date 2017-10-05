@@ -11,10 +11,16 @@ if(isset($_POST['submit'])) {
 
     if($fullname == "") {
         $error = "Volledige naam is niet ingevuld!";
+    } elseif(strpos($fullname, " ") == false){
+        $error = "Je volledige naam bestaat toch uit je voornaam en achternaam, hoop ik?";
     } elseif($username == "") {
         $error = "Gebruikersnaam is niet ingevuld!";
+    } elseif(strpos($username, " ") == true){
+        $error = "Je inlognaam mag geen spaties bevatten!";
     } elseif($mail == "") {
         $error = "E-mail is niet ingevuld!";
+    } elseif (!filter_var($mail, FILTER_VALIDATE_EMAIL)){
+      $error = "E-mail adres is niet geldig!";
     } elseif($password == "") {
         $error = "Wachtwoord is niet ingevuld!";
     } elseif($password != $verifypass) {
@@ -24,7 +30,10 @@ if(isset($_POST['submit'])) {
     if($error == ""){
         try {
             $stmt = $db->prepare('INSERT INTO admin_credentials (fullname, username, mail, password) VALUES (:fullname, :username, :mail, :password)');
-            $stmt->execute(array(':fullname' => $fullname, ':username' => $username, ':mail' => $mail, ':password' => $password));
+            $stmt->execute(array(':fullname' => $fullname, ':username' => $username, ':mail' => $mail, ':password' => password_hash($password, PASSWORD_DEFAULT)));
+
+            $stmt = $db->prepare("UPDATE site_settings SET part1_installed = 1 WHERE id = 1");
+            $stmt->execute();
             header("Location: installation2.php");
             exit;
         }

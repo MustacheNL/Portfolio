@@ -1,7 +1,7 @@
 <?php
 include "../private/config.php";
 
-$query = $db->prepare("SELECT site_installed FROM site_settings");
+$query = $db->prepare("SELECT * FROM site_settings");
 $query->execute();
 
 while ($row = $query->fetch(PDO::FETCH_ASSOC)) {

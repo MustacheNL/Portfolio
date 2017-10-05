@@ -1,5 +1,6 @@
 <?php
 require 'includes/header.php';
+
 $error = "";
 if(isset($_POST['submit'])) {
     $country = $_POST['country'];
@@ -10,14 +11,24 @@ if(isset($_POST['submit'])) {
 
     if($country == "") {
         $error = "Land is niet ingevuld!";
+    } elseif(strpos($country, " ") == true){
+        $error = "Je land mag geen spaties bevatten!";
     } elseif($region == "") {
         $error = "Provincie is niet ingevuld!";
+    } elseif(strpos($region, " ") == true){
+        $error = "Je provincie mag geen spaties bevatten!";
     } elseif($city == "") {
         $error = "Stad is niet ingevuld!";
+    } elseif(strpos($city, " ") == true){
+        $error = "Je stad mag geen spaties bevatten!";
     } elseif($street == "") {
         $error = "Straat is niet ingevuld!";
+    } elseif(!preg_match('~[0-9]~', $street)){
+        $error = "Je straat bevat toch ook een huisnummer?";
     } elseif($postalcode == "") {
         $error = "Postcode is niet ingevuld!";
+    } elseif(strpos($postalcode, " ") == true){
+        $error = "Je postcode mag geen spaties bevatten!";
     }
 
     if($error == ""){

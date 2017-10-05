@@ -1,9 +1,4 @@
-<?php
-require 'includes/header.php';
-if (empty($_SESSION['name'])) {
-    header('Location: index.php');
-}
-?>
+<?php require 'includes/header.php';  ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

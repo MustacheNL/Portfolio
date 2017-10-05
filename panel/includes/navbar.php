@@ -6,7 +6,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.html">Dashboard</a>
+        <a class="navbar-brand" href="index.php">Dashboard</a>
     </div>
 
     <ul class="nav navbar-top-links navbar-right">
@@ -147,9 +147,9 @@
                 <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
             </a>
             <ul class="dropdown-menu dropdown-user">
-                <li><a href="#"><i class="fa fa-user fa-fw"></i> Mijn profiel</a>
+                <li><a href="my_profile.php"><i class="fa fa-user fa-fw"></i> Mijn profiel</a>
                 </li>
-                <li><a href="#"><i class="fa fa-gear fa-fw"></i> Instellingen</a>
+                <li><a href="my_settings.php"><i class="fa fa-gear fa-fw"></i> Instellingen</a>
                 </li>
                 <li class="divider"></li>
                 <li><a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> Uitloggen</a>
@@ -172,7 +172,7 @@
                 </li>
                 <li>
                     <a href="#"><i class="fa fa-wrench fa-fw"></i> Pagina's bewerken<span
-                            class="fa arrow"></span></a>
+                                class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
                             <a href="edit_home.php">Home</a>
