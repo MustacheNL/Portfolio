@@ -108,8 +108,8 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){ ?>
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 $education_type = $row['education_type'];
                 $education_level = $row['education_level'];
-                $education_year_start = $row['education_year_end'];
-                $education_year_end = $row['education_year_start'];
+                $education_year_start = $row['education_year_start'];
+                $education_year_end = $row['education_year_end'];
                 $education_info = $row['education_info'];
 
                 echo "<div class=\"row item\">
@@ -156,139 +156,140 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){ ?>
 
     <?php $stmt = $db->prepare("SELECT * FROM site_skills");
     $stmt->execute();
-    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){ ?>
-    <style>
-        .php {
-            width: <?php echo $row['skill_percentage1']; ?>%;
-            -moz-animation: php 2s ease;
-            -webkit-animation: php 2s ease;
-        }
-
-        .html5 {
-            width: <?php echo $row['skill_percentage2']; ?>%;
-            -moz-animation: html5 2s ease;
-            -webkit-animation: html5 2s ease;
-        }
-
-        .css3 {
-            width: <?php echo $row['skill_percentage3']; ?>%;
-            -moz-animation: css3 2s ease;
-            -webkit-animation: css3 2s ease;
-        }
-
-        .sql {
-            width: <?php echo $row['skill_percentage4']; ?>%;
-            -moz-animation: sql 2s ease;
-            -webkit-animation: sql 2s ease;
-        }
-
-        .design {
-            width: <?php echo $row['skill_percentage5']; ?>%;
-            -moz-animation: design 2s ease;
-            -webkit-animation: design 2s ease;
-        }
-
-        @-moz-keyframes php {
-            0% {
-                width: 0px;
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
+        <style>
+            .php {
+                width: <?php echo $row['skill_percentage']; ?>%;
+                -moz-animation: php 2s ease;
+                -webkit-animation: php 2s ease;
             }
 
-            100% {
-                width: <?php echo $row['skill_percentage1']; ?>%;
-            }
-        }
-
-        @-moz-keyframes html5 {
-            0% {
-                width: 0px;
+            .html5 {
+                width: <?php echo $row['skill_percentage']; ?>%;
+                -moz-animation: html5 2s ease;
+                -webkit-animation: html5 2s ease;
             }
 
-            100% {
-                width: <?php echo $row['skill_percentage2']; ?>%;
-            }
-        }
-
-        @-moz-keyframes css3 {
-            0% {
-                width: 0px;
+            .css3 {
+                width: <?php echo $row['skill_percentage']; ?>%;
+                -moz-animation: css3 2s ease;
+                -webkit-animation: css3 2s ease;
             }
 
-            100% {
-                width: <?php echo $row['skill_percentage3']; ?>%;
-            }
-        }
-
-        @-moz-keyframes sql {
-            0% {
-                width: 0px;
+            .sql {
+                width: <?php echo $row['skill_percentage']; ?>%;
+                -moz-animation: sql 2s ease;
+                -webkit-animation: sql 2s ease;
             }
 
-            100% {
-                width: <?php echo $row['skill_percentage4']; ?>%;
-            }
-        }
-
-        @-moz-keyframes design {
-            0% {
-                width: 0px;
+            .design {
+                width: <?php echo $row['skill_percentage']; ?>%;
+                -moz-animation: design 2s ease;
+                -webkit-animation: design 2s ease;
             }
 
-            100% {
-                width: <?php echo $row['skill_percentage5']; ?>%;
-            }
-        }
+            @-moz-keyframes php {
+                0% {
+                    width: 0px;
+                }
 
-        @-webkit-keyframes php {
-            0% {
-                width: 0px;
-            }
-
-            100% {
-                width: <?php echo $row['skill_percentage1']; ?>%;
-            }
-        }
-
-        @-webkit-keyframes html5 {
-            0% {
-                width: 0px;
+                100% {
+                    width: <?php echo $row['skill_percentage']; ?>%;
+                }
             }
 
-            100% {
-                width: <?php echo $row['skill_percentage2']; ?>%;
-            }
-        }
+            @-moz-keyframes html5 {
+                0% {
+                    width: 0px;
+                }
 
-        @-webkit-keyframes css3 {
-            0% {
-                width: 0px;
-            }
-
-            100% {
-                width: <?php echo $row['skill_percentage3']; ?>%;
-            }
-        }
-
-        @-webkit-keyframes sql {
-            0% {
-                width: 0px;
+                100% {
+                    width: <?php echo $row['skill_percentage']; ?>%;
+                }
             }
 
-            100% {
-                width: <?php echo $row['skill_percentage4']; ?>%;
-            }
-        }
+            @-moz-keyframes css3 {
+                0% {
+                    width: 0px;
+                }
 
-        @-webkit-keyframes design {
-            0% {
-                width: 0px;
+                100% {
+                    width: <?php echo $row['skill_percentage']; ?>%;
+                }
             }
 
-            100% {
-                width: <?php echo $row['skill_percentage5']; ?>%;
+            @-moz-keyframes sql {
+                0% {
+                    width: 0px;
+                }
+
+                100% {
+                    width: <?php echo $row['skill_percentage']; ?>%;
+                }
             }
-        }
-    </style>
-    <?php } $stmt = $db->prepare("SELECT * FROM content WHERE page = 'skills'");
+
+            @-moz-keyframes design {
+                0% {
+                    width: 0px;
+                }
+
+                100% {
+                    width: <?php echo $row['skill_percentage']; ?>%;
+                }
+            }
+
+            @-webkit-keyframes php {
+                0% {
+                    width: 0px;
+                }
+
+                100% {
+                    width: <?php echo $row['skill_percentage']; ?>%;
+                }
+            }
+
+            @-webkit-keyframes html5 {
+                0% {
+                    width: 0px;
+                }
+
+                100% {
+                    width: <?php echo $row['skill_percentage']; ?>%;
+                }
+            }
+
+            @-webkit-keyframes css3 {
+                0% {
+                    width: 0px;
+                }
+
+                100% {
+                    width: <?php echo $row['skill_percentage']; ?>%;
+                }
+            }
+
+            @-webkit-keyframes sql {
+                0% {
+                    width: 0px;
+                }
+
+                100% {
+                    width: <?php echo $row['skill_percentage']; ?>%;
+                }
+            }
+
+            @-webkit-keyframes design {
+                0% {
+                    width: 0px;
+                }
+
+                100% {
+                    width: <?php echo $row['skill_percentage']; ?>%;
+                }
+            }
+        </style>
+    <?php }
+    $stmt = $db->prepare("SELECT * FROM content WHERE page = 'skills'");
     $stmt->execute();
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){ ?>
     <div class="row skill">
@@ -297,18 +298,19 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){ ?>
         </div>
         <div class="nine columns main-col">
             <p><?php echo $row['content2']; ?></p>
-            <?php } $stmt = $db->prepare("SELECT * FROM site_skills");
+            <?php }
+            $stmt = $db->prepare("SELECT * FROM site_skills");
             $stmt->execute();
-            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){ ?>
-            <div class="bars">
-                <ul class="skills">
-                    <li><span class="bar-expand php"></span><em>PHP</em></li>
-                    <li><span class="bar-expand html5"></span><em>HTML5</em></li>
-                    <li><span class="bar-expand css3"></span><em>CSS3</em></li>
-                    <li><span class="bar-expand sql"></span><em>SQL</em></li>
-                    <li><span class="bar-expand design"></span><em>Design</em></li>
-                </ul>
-            </div>
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
+                <div class="bars">
+                    <ul class="skills">
+                        <li><span class="bar-expand php"></span><em>PHP</em></li>
+                        <li><span class="bar-expand html5"></span><em>HTML5</em></li>
+                        <li><span class="bar-expand css3"></span><em>CSS3</em></li>
+                        <li><span class="bar-expand sql"></span><em>SQL</em></li>
+                        <li><span class="bar-expand design"></span><em>Design</em></li>
+                    </ul>
+                </div>
             <?php } ?>
         </div>
     </div>

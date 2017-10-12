@@ -42,9 +42,6 @@ if(isset($_POST['submit'])) {
         try {
             $stmt = $db->prepare('INSERT INTO admin_credentials (fullname, username, mail, password) VALUES (:fullname, :username, :mail, :password)');
             $stmt->execute(array(':fullname' => $fullname, ':username' => $username, ':mail' => $mail, ':password' => password_hash($password, PASSWORD_DEFAULT)));
-
-            $stmt = $db->prepare("UPDATE site_settings SET part1_installed = 1 WHERE id = 1");
-            $stmt->execute();
             header("Location: installation2.php");
             exit;
         }
