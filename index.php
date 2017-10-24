@@ -58,24 +58,23 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
     <p class="scrolldown">
         <a class="smoothscroll" href="#about"><i class="icon-down-circle"></i></a>
     </p>
-
 </header>
 
 <?php }
-$stmt = $db->prepare("SELECT * FROM admin_credentials, site_about, content WHERE page = 'about'");
+$stmt = $db->prepare("SELECT * FROM admin_credentials, site_about");
 $stmt->execute();
 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
     <section id="about">
         <div class="row">
             <div class="three columns">
-                <img class="profile-pic" src="images/<?php echo $row['image']; ?>" alt=""/>
+                <img class="profile-pic" src="images/<?php echo $row['about_image']; ?>" alt=""/>
             </div>
             <div class="nine columns main-col">
-                <h2><?php echo $row['content1']; ?></h2>
+                <h2><?php echo $row['about_info_header1']; ?></h2>
                 <p><?php echo $row['about_info2']; ?></p>
                 <div class="row">
                     <div class="columns contact-details">
-                        <h2><?php echo $row['content2']; ?></h2>
+                        <h2><?php echo $row['about_info_header2']; ?></h2>
                         <p class="address">
                             <span><?php echo $row['fullname']; ?></span><br><span><?php echo $row['street']; ?>
                                 <br> <?php echo $row['city']; ?>
@@ -84,7 +83,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
                     </div>
                     <div class="columns download">
                         <p><a href="/cv.docx" class="button"><i
-                                        class="fa fa-download"></i><?php echo $row['content3']; ?></a></p>
+                                        class="fa fa-download"></i><?php echo $row['about_downloadbutton']; ?></a></p>
                     </div>
                 </div>
             </div>
@@ -98,11 +97,10 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){ ?>
 <section id="resume">
     <div class="row education">
         <div class="three columns header-col">
-            <h1><span><?php echo $row['content1']; ?></span></h1>
+            <h1><span><?php echo $row['content']; ?></span></h1>
         </div>
-        <?php } ?>
         <div class="nine columns main-col">
-            <?php
+            <?php }
             $stmt = $db->prepare("SELECT * FROM site_education");
             $stmt->execute();
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -128,12 +126,11 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){ ?>
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){ ?>
     <div class="row work">
         <div class="three columns header-col">
-            <h1><span><?php echo $row['content1']; ?></span></h1>
+            <h1><span><?php echo $row['content']; ?></span></h1>
         </div>
         <?php } ?>
         <div class="nine columns main-col">
-            <?php
-            $stmt = $db->prepare("SELECT * FROM site_work");
+            <?php $stmt = $db->prepare("SELECT * FROM site_work");
             $stmt->execute();
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 $work_type = $row['work_type'];
@@ -158,37 +155,13 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){ ?>
     $stmt->execute();
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
         <style>
-            .php {
+            .<?php echo $row['skill_name']; ?> {
                 width: <?php echo $row['skill_percentage']; ?>%;
                 -moz-animation: php 2s ease;
                 -webkit-animation: php 2s ease;
             }
 
-            .html5 {
-                width: <?php echo $row['skill_percentage']; ?>%;
-                -moz-animation: html5 2s ease;
-                -webkit-animation: html5 2s ease;
-            }
-
-            .css3 {
-                width: <?php echo $row['skill_percentage']; ?>%;
-                -moz-animation: css3 2s ease;
-                -webkit-animation: css3 2s ease;
-            }
-
-            .sql {
-                width: <?php echo $row['skill_percentage']; ?>%;
-                -moz-animation: sql 2s ease;
-                -webkit-animation: sql 2s ease;
-            }
-
-            .design {
-                width: <?php echo $row['skill_percentage']; ?>%;
-                -moz-animation: design 2s ease;
-                -webkit-animation: design 2s ease;
-            }
-
-            @-moz-keyframes php {
+            @-moz-keyframes <?php echo $row['skill_name']; ?> {
                 0% {
                     width: 0px;
                 }
@@ -198,7 +171,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){ ?>
                 }
             }
 
-            @-moz-keyframes html5 {
+            @-webkit-keyframes <?php echo $row['skill_name']; ?> {
                 0% {
                     width: 0px;
                 }
@@ -208,107 +181,30 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){ ?>
                 }
             }
 
-            @-moz-keyframes css3 {
-                0% {
-                    width: 0px;
-                }
-
-                100% {
-                    width: <?php echo $row['skill_percentage']; ?>%;
-                }
-            }
-
-            @-moz-keyframes sql {
-                0% {
-                    width: 0px;
-                }
-
-                100% {
-                    width: <?php echo $row['skill_percentage']; ?>%;
-                }
-            }
-
-            @-moz-keyframes design {
-                0% {
-                    width: 0px;
-                }
-
-                100% {
-                    width: <?php echo $row['skill_percentage']; ?>%;
-                }
-            }
-
-            @-webkit-keyframes php {
-                0% {
-                    width: 0px;
-                }
-
-                100% {
-                    width: <?php echo $row['skill_percentage']; ?>%;
-                }
-            }
-
-            @-webkit-keyframes html5 {
-                0% {
-                    width: 0px;
-                }
-
-                100% {
-                    width: <?php echo $row['skill_percentage']; ?>%;
-                }
-            }
-
-            @-webkit-keyframes css3 {
-                0% {
-                    width: 0px;
-                }
-
-                100% {
-                    width: <?php echo $row['skill_percentage']; ?>%;
-                }
-            }
-
-            @-webkit-keyframes sql {
-                0% {
-                    width: 0px;
-                }
-
-                100% {
-                    width: <?php echo $row['skill_percentage']; ?>%;
-                }
-            }
-
-            @-webkit-keyframes design {
-                0% {
-                    width: 0px;
-                }
-
-                100% {
-                    width: <?php echo $row['skill_percentage']; ?>%;
-                }
-            }
         </style>
     <?php }
-    $stmt = $db->prepare("SELECT * FROM content WHERE page = 'skills'");
+    $stmt = $db->prepare("SELECT * FROM content WHERE page = 'skills_title'");
     $stmt->execute();
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){ ?>
     <div class="row skill">
         <div class="three columns header-col">
-            <h1><span><?php echo $row['content1']; ?></span></h1>
+            <h1><span><?php echo $row['content']; ?></span></h1>
         </div>
+        <?php }
+        $stmt = $db->prepare("SELECT * FROM content WHERE page = 'skills_info'");
+        $stmt->execute();
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){ ?>
         <div class="nine columns main-col">
-            <p><?php echo $row['content2']; ?></p>
+            <p><?php echo $row['content']; ?></p>
             <?php }
             $stmt = $db->prepare("SELECT * FROM site_skills");
             $stmt->execute();
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
                 <div class="bars">
                     <ul class="skills">
-                        <li><span class="bar-expand php"></span><em>PHP</em></li>
-                        <li><span class="bar-expand html5"></span><em>HTML5</em></li>
-                        <li><span class="bar-expand css3"></span><em>CSS3</em></li>
-                        <li><span class="bar-expand sql"></span><em>SQL</em></li>
-                        <li><span class="bar-expand design"></span><em>Design</em></li>
+                        <li>
+                            <span class="bar-expand <?php echo $row['skill_name']; ?>"></span><em><?php echo $row['skill_name']; ?></em>
+                        </li>
                     </ul>
                 </div>
             <?php } ?>
@@ -322,7 +218,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){ ?>
 <section id="portfolio">
     <div class="row">
         <div class="twelve columns collapsed">
-            <h1><?php echo $row['content1']; ?></h1>
+            <h1><?php echo $row['content']; ?></h1>
             <?php }
             $stmt = $db->prepare("SELECT * FROM site_projects");
             $stmt->execute();
@@ -331,7 +227,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){ ?>
                 <div class="columns portfolio-item">
                     <div class="item-wrap">
                         <a href="#modal-0<?php echo $row['id']; ?>" title="">
-                            <img alt="" src="images/portfolio/coffee.jpg">
+                            <img alt="" src="images/portfolio/projects/small/<?php echo $row['project_small_image']; ?>">
                             <div class="overlay">
                                 <div class="portfolio-item-meta">
                                     <h5><?php echo $row['project_name']; ?></h5>
@@ -351,7 +247,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){ ?>
         $stmt->execute();
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
         <div id="modal-0<?php echo $row['id']; ?>" class="popup-modal mfp-hide">
-            <img class="scale-with-grid" src="images/portfolio/modals/m-coffee.jpg" alt=""/>
+            <img class="scale-with-grid" src="images/portfolio/projects/big/<?php echo $row['project_big_image']; ?>" alt=""/>
             <div class="description-box">
                 <h4><?php echo $row['project_name']; ?></h4>
                 <p><?php echo $row['project_info']; ?></p>
@@ -367,17 +263,17 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){ ?>
 </section>
 
 <?php }
-$stmt = $db->prepare("SELECT * FROM content WHERE page = 'contact_text'");
+$stmt = $db->prepare("SELECT * FROM content WHERE page = 'contact_title'");
 $stmt->execute();
 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
 <section id="call-to-action">
     <div class="row">
         <div class="two columns header-col">
-            <h1><span><?php echo $row['content1']; ?></span></h1>
+            <h1><span><?php echo $row['content']; ?></span></h1>
         </div>
         <div class="seven columns">
-            <h2><span class="lead"><?php echo $row['content2']; ?></span></h2>
-            <p><span class="lead"><?php echo $row['content3']; ?></span></p>
+            <h2><span class="lead"><?php echo $row['content']; ?></span></h2>
+            <p><span class="lead"><?php echo $row['content']; ?></span></p>
         </div>
         <div class="three columns action"></div>
     </div>
@@ -386,11 +282,11 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
 <section id="contact">
     <div class="row section-head">
         <div class="two columns header-col">
-            <h1><span><?php echo $row['content1']; ?></span></h1>
+            <h1><span><?php echo $row['content']; ?></span></h1>
         </div>
 
         <div class="ten columns">
-            <p class="lead"><?php echo $row['content4']; ?></p>
+            <p class="lead"><?php echo $row['content']; ?></p>
         </div>
     </div>
     <?php } ?>
