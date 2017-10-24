@@ -6,6 +6,7 @@ $stmt->execute();
 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 ?>
 <!DOCTYPE html>
+<html>
 <head>
     <meta charset="utf-8">
     <title><?php echo $row['site_name']; ?></title>
@@ -227,7 +228,8 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){ ?>
                 <div class="columns portfolio-item">
                     <div class="item-wrap">
                         <a href="#modal-0<?php echo $row['id']; ?>" title="">
-                            <img alt="" src="images/portfolio/projects/small/<?php echo $row['project_small_image']; ?>">
+                            <img alt=""
+                                 src="images/portfolio/projects/small/<?php echo $row['project_small_image']; ?>">
                             <div class="overlay">
                                 <div class="portfolio-item-meta">
                                     <h5><?php echo $row['project_name']; ?></h5>
@@ -247,7 +249,8 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){ ?>
         $stmt->execute();
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
         <div id="modal-0<?php echo $row['id']; ?>" class="popup-modal mfp-hide">
-            <img class="scale-with-grid" src="images/portfolio/projects/big/<?php echo $row['project_big_image']; ?>" alt=""/>
+            <img class="scale-with-grid" src="images/portfolio/projects/big/<?php echo $row['project_big_image']; ?>"
+                 alt=""/>
             <div class="description-box">
                 <h4><?php echo $row['project_name']; ?></h4>
                 <p><?php echo $row['project_info']; ?></p>
@@ -379,7 +382,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
     <?php } ?>
 </footer>
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="js/portfolio/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="js/portfolio/jquery-1.10.2.min.js"><\/script>')</script>
 <script type="text/javascript" src="js/portfolio/jquery-migrate-1.2.1.min.js"></script>
 <script src="js/portfolio/jquery.flexslider.js"></script>
