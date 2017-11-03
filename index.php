@@ -70,11 +70,11 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
         </div>
     </div>
     <?php } ?>
-<?php include "content/contact.php"; ?>
+    <?php include "content/contact.php"; ?>
 </section>
 
 <footer>
-<?php include "content/footer.php"; ?>
+    <?php include "content/footer.php"; ?>
 </footer>
 
 <script src="js/portfolio/jquery.min.js"></script>
