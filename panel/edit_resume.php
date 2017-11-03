@@ -27,16 +27,27 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">Blank</h1>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <form role="form">
+                                    <div class="form-group">
+                                        <label>Text Input with Placeholder</label>
+                                        <input class="form-control" placeholder="Enter text">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-<script src="vendor/metisMenu/metisMenu.min.js"></script>
-<script src="vendor/raphael/raphael.min.js"></script>
-<script src="dist/js/sb-admin-2.js"></script>
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="vendor/metisMenu/metisMenu.min.js"></script>
+    <script src="vendor/raphael/raphael.min.js"></script>
+    <script src="dist/js/sb-admin-2.js"></script>
 </body>
 </html>
