@@ -1,5 +1,5 @@
 ErrorDocument 404 /404.html
-ErrorDocument 500 /505.html
+ErrorDocument 500 /500.html
 
 RewriteEngine On
 RewriteBase /
@@ -8,4 +8,4 @@ RewriteCond %{REQUEST_URI} ^/404/$
 RewriteRule ^(.*)$ /404.html [L]
 
 RewriteCond %{REQUEST_URI} ^/500/$
-RewriteRule ^(.*)$ /505.html[L]
+RewriteRule ^(.*)$ /500.html [L]
