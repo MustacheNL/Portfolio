@@ -181,7 +181,19 @@
                             <a href="edit_about.php">Over mij</a>
                         </li>
                         <li>
-                            <a href="edit_resume.php">CV</a>
+                            <a href="#">CV <span class="fa arrow"></span></a>
+                            <ul class="nav nav-third-level">
+                                <li>
+                                    <a href="edit_education.php">Educatie</a>
+                                </li>
+                                <li>
+                                    <a href="edit_work.php">Werk</a>
+                                </li>
+                                <li>
+                                    <a href="edit_skills.php">Skills</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-third-level -->
                         </li>
                         <li>
                             <a href="edit_projects.php">Projecten</a>
