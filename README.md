@@ -1,6 +1,6 @@
 # Portfolio
 An easy-to-use portfolio system for everyone! Stay tuned for more.
-The moment this is written, the system is unstable and at version: <b><i>V0.5 BETA 01012017</i></b>.
+The moment this is written, the system is unstable and at version: <b><i>V0.8 BETA 01112017</i></b>.
 It's at your own risk to use this for now, because for any leaks or faults in the system I'm not responsible as developer.
 
 <b><h3><i>The first thing you need to know:</i></h3></b>
