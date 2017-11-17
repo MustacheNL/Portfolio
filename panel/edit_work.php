@@ -26,14 +26,14 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Projecten</h1>
+                    <h1 class="page-header">Werk</h1>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                           Projecten
+                            Werk
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
@@ -41,27 +41,28 @@
                                     <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Naam</th>
-                                        <th>Type</th>
+                                        <th>Soort</th>
+                                        <th>Plaats</th>
+                                        <th>Van X tot X</th>
                                         <th>Informatie</th>
-                                        <th>Link</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <?php $stmt = $db->prepare("SELECT * FROM site_projects");
+                                    <?php $stmt = $db->prepare("SELECT * FROM site_work");
                                     $stmt->execute();
                                     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                                         $id = $row['id'];
-                                        $project_name = $row['project_name'];
-                                        $project_type = $row['project_type'];
-                                        $project_info = $row['project_info'];
-                                        $project_link = $row['project_link']; ?>
+                                        $work_type = $row['work_type'];
+                                        $work_place = $row['work_place'];
+                                        $work_year_start = $row['work_year_start'];
+                                        $work_year_end = $row['work_year_end'];
+                                        $work_info = $row['work_info']; ?>
                                         <tr>
                                             <td><?php echo $id; ?></td>
-                                            <td><?php echo $project_name; ?></td>
-                                            <td><?php echo $project_type; ?></td>
-                                            <td><?php echo $project_info; ?></td>
-                                            <td><?php echo $project_link; ?></td>
+                                            <td><?php echo $work_type; ?></td>
+                                            <td><?php echo $work_place; ?></td>
+                                            <td><?php echo $work_year_start; ?> - <?php echo $work_year_end; ?></td>
+                                            <td><?php echo $work_info; ?></td>
                                         </tr>
                                     <?php } ?>
                                     </tbody>

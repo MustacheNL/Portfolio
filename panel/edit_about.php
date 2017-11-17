@@ -37,12 +37,6 @@ if (isset($_POST['submit'])) {
     <script type="text/javascript" src="jquery.js"></script>
     <script type="text/javascript" src="jquery.form.js"></script>
     <script>
-        $(document).ready(function () {
-            $('form').ajaxForm(function () {
-                alert("Uploaded XD YES MATE");
-            });
-        });
-
         function preview_image() {
             var total_file = document.getElementById("upload_file").files.length;
             for (var i = 0; i < total_file; i++) {
@@ -101,7 +95,7 @@ if (isset($_POST['submit'])) {
                                         <div id="image_preview"></div>
                                     </div>
                                     <div class="panel-footer">
-                                        Let op: Dit werkt nog niet helemaal zoals het zou moeten werken. Pas op wat je hier mee doet.
+                                        Let op: Dit werkt nog niet helemaal zoals het zou moeten werken. Pas op wat je hiezrmee doet.
                                     </div>
                                 </div>
                             </div>
