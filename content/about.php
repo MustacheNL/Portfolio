@@ -15,7 +15,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
                         <p class="address">
                             <span><?php echo $row['fullname']; ?></span><br><span><?php echo $row['street']; ?>
                                 <br> <?php echo $row['city']; ?>p, <?php echo $row['postalcode']; ?> <?php echo $row['country']; ?> </span><br>
-                            <span>06-47966197</span><br></p>
+                            <span>06-nogwat</span><br></p>
                     </div>
                     <div class="columns download">
                         <p><a href="CV.docx" class="button"><i
