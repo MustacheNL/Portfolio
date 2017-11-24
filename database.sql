@@ -196,7 +196,7 @@ CREATE TABLE `site_settings` (
 --
 
 INSERT INTO `site_settings` (`id`, `site_installed`) VALUES
-(1, 1);
+(1, 0);
 
 -- --------------------------------------------------------
 
