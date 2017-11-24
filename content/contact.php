@@ -49,7 +49,7 @@
                 <?php echo $row['street']; ?> <br>
                 <?php echo $row['city']; ?>, <?php echo $row['postalcode']; ?> <?php echo $row['country']; ?>
                 <br>
-                <span>06-47966197</span>
+                <span>06-nogwat</span>
             </p>
         </div>
     </aside>
