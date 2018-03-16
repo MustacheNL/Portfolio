@@ -1,4 +1,7 @@
-# Portfolio
+# Easy-Portfolio
+VERSION 1 IS DISCONTINUED AND NOT SAFE FOR USE!
+SOON I HAVE PLANNED TO WRITE VERSION 2... stay tuned!
+
 An easy-to-use portfolio system for everyone! Stay tuned for more.
 The moment this is written, the system is unstable and at version: <b><i>V0.8 BETA 01112017</i></b>.
 It's at your own risk to use this for now, because for any leaks or faults in the system I'm not responsible as developer.
